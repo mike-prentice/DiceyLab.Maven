@@ -14,7 +14,7 @@ public Simulation(int numberOfTosses) {
 public void runSimulation(int numTosses, int numDice){
     for (int i = 1; i <numTosses; i++) {
     Dice.tossAndSum(numDice);
-    Bins.bins[Dice.sum]++;
+    Bins.bins[Dice.sum - 1]++;
     Dice.sum = 0;
 
 
@@ -23,13 +23,11 @@ public void runSimulation(int numTosses, int numDice){
 
 }
 
-public void  printResults() {
-    for (int i = 1; i < Bins.bins[i]; i++) {
-        StringBuffer output = new StringBuffer(100*Bins.bins[i]/numTosses);
-        for (int j = 0; j < Bins.bins[i]; j++) {
-            output.append("*");
-        }
-        System.out.println((i + 1) + ":" + output);
+public void printResults() {
+    for (int k = 1; k < Bins.bins.length-1; k++) {
+        StringBuilder output = new StringBuilder(100*Bins.bins[k]/1000000);
+        output.append("*".repeat(Math.max(0, Bins.bins[k])));
+        System.out.println((k + 1) + ":" + output);
     }
 
 }
