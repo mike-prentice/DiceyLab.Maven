@@ -1,21 +1,30 @@
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Simulation {
-    int numTosses;
-public Simulation(int numberOfTosses) {
-    Dice.tossAndSum(numberOfTosses);
+    public int numTosses;
+    public int numDie;
+    public int min, max;
+
+
+
+
+
+public Simulation(int numberOfTosses, int numDice) {
+    this.numDie = numDice;
     this.numTosses = numberOfTosses;
-
-
 
     
 }
 
 public void runSimulation(int numTosses, int numDice){
+    min =  numDice;
+    max = numDice * 6;
+    Dice dice = new Dice(2);
+    Bins bins = new Bins(min, max);
     for (int i = 1; i <numTosses; i++) {
-    Dice.tossAndSum(numDice);
-    Bins.bins[Dice.sum - 1]++;
-    Dice.sum = 0;
+    bins.incrementBin(dice.tossAndSum(2));
+
 
 
     }
@@ -24,11 +33,11 @@ public void runSimulation(int numTosses, int numDice){
 }
 
 public void printResults() {
-    for (int k = 1; k < Bins.bins.length-1; k++) {
-        StringBuilder output = new StringBuilder(100*Bins.bins[k]/1000000);
-        output.append("*".repeat(Math.max(0, Bins.bins[k])));
+    IntStream.iterate(1, k -> k < 100, k -> k + 1).forEach(k -> {
+        StringBuilder output = new StringBuilder(100 * Bins.getBin(k) / 1000000);
+        output.append("*".repeat(Math.max(0, Bins.getBin(k + 1))));
         System.out.println((k + 1) + ":" + output);
-    }
+    });
 
 }
 

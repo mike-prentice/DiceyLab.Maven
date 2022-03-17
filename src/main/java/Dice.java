@@ -1,17 +1,15 @@
 public class Dice {
-    public static int numDie;
-    public static int sum;
-
+    public  int numDie;
     public Dice(int numDice) {
         numDie = numDice;
     }
 
-    public static int tossAndSum(int numDie) {
+    
 
+    public int tossAndSum(int numDie) {
+        int sum = 0;
         for (int i = 0; i < numDie; i++) {
             sum += Math.floor(Math.random() * 6 + 1);
-
-
 
         }
         return sum;
