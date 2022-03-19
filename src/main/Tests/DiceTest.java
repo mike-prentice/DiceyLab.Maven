@@ -10,7 +10,7 @@ public class DiceTest extends TestCase {
         Dice dice = new Dice(2);
         int expectedRolls = 2;
         //when
-        dice.tossAndSum(2);
+        dice.tossAndSum();
         int  actual = 2;
         //then
         assertEquals(expectedRolls, actual);

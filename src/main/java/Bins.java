@@ -1,20 +1,24 @@
 import java.util.ArrayList;
 
 public class Bins {
-    public static int min;
-    public static int [] bins;
+    private final int[] bins;
+    private final int minRoll;
 
- public Bins(int min, int max) {
-    bins = new int [max - min + 1];
- }
-    
-public static int getBin(int binNum) {
-    return bins[binNum - (min)];
-}
+    public Bins(int min, int max) {
+        minRoll = min;
+        bins = new int[max - min + 1];
+    }
+
+    public void incrementBin(int binNum) {
+        bins[binNum - minRoll]++;
+    }
 
 
-public void incrementBin(int binNum) {bins[binNum-(min)]++;
-}
+    public int getBin(int binNum) {
+        return bins[binNum - minRoll];
+    }
+
+
 }
 
 

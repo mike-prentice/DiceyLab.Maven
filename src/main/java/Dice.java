@@ -1,12 +1,12 @@
 public class Dice {
-    public  int numDie;
+    private final int numDie;
+
     public Dice(int numDice) {
-        numDie = numDice;
+        this.numDie = numDice;
     }
 
-    
 
-    public int tossAndSum(int numDie) {
+    public int tossAndSum() {
         int sum = 0;
         for (int i = 0; i < numDie; i++) {
             sum += Math.floor(Math.random() * 6 + 1);
