@@ -22,7 +22,7 @@ public class Simulation {
     }
 
     public void runSimulation() {
-        for (int i = 1; i < numTosses; i++) {
+        for (int i = 0; i < numTosses; i++) {
             bins.incrementBin(dice.tossAndSum());
 
 
@@ -32,9 +32,21 @@ public class Simulation {
     }
 
     public void printResults() {
+        int result = 0;
+        double percent;
+        String stars = "";
+        System.out.println("The result of " + numDie + " dice being rolled " + numTosses + " times...");
+
         for (int i = 0; i < max - min; i++) {
-            System.out.println(bins.getBin(i + 2));
+            result = bins.getBin(i+2);
+            percent = ((double)result)/numTosses;
+            for (int j = 0; j < Math.round(percent*100); j++){
+                stars += "*";
+            }
+            System.out.println(String.format("%2d : %10d: %.2f %s", min+i, result, percent, stars));
+            stars="";
         }
+
 
 
     }
